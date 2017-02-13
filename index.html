@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Find Camera Position</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Find Camera Position</h1>
+    <div class="calculator">
+      <form class="calculate-form">
+        <ul>
+          <li>
+            <label for="focalLength" class="">Focal Length: </label>
+            <input type="number"  step="0.01" name='focalLength' class="input" required="required" id="focalLength" placeholder="number, e.g. 57"> mm
+          </li>
+          <li>
+            <label for="sensorSize" class="">Sensor Size: </label>
+            <input type="number" step="0.01" name='sensorSize' class="input" required="required" id="sensorSize" placeholder="number, e.g. 13.2"> mm
+          </li>
+          <li>
+            <label for="boardWidth" class="">White board width: </label>
+            <input type="number" step="0.01" name='boardWidth' class="input" required="required" id="boardWidth" placeholder="number, e.g. 6"> ft.
+          </li>
+          <li>
+            <label for="presenter" class="">Average presenter height: </label>
+            <input type="number" step="0.01" name='presenter' value="5.5" class="input" required="required" id="presenter" placeholder="number, e.g. 5.5"> ft.
+          </li>
+          <li>
+            <label for="room" class="">Room height: </label>
+            <input type="number" step="0.01" name='room' class="input" required="required" id="room" placeholder="number, e.g. 12"> ft.
+          </li>
+          </ul>
+          <input type="submit" value="Calculate">
+      </form>
+      <div class="result">
+        <p>Horizontal working distance is: <span id='workingDistance'></span></p>
+        <p>Height from the ceiling is: <span id='heightFromCeiling'></span></p>
+      </div>
+    </div>
+  </div>
+<style>
+li{
+   list-style-type:none;  
+   list-style-position: outside;
+   margin: 20px 0;
+}
+ul{
+  padding-left: 0;
+}
+.container{
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+.calculate-form,.result{
+  display: block;
+  margin-top:50px;
+  margin-left: 30%;
+  
+  text-align: left;
+}
+.calculator{
+  position: absolute;
+  width: 100%;
+}
+#workingDistance,#heightFromCeiling{
+  font-weight: 800;
+  color: red;
+}
+.input{
+  margin-left: 1%;
+}
+
+</style>
+<script>
+const calculate = document.querySelector('.calculate-form');
+const workingDistance = document.querySelector('#workingDistance');
+const heightFromCeiling = document.querySelector('#heightFromCeiling');
+
+calculate.addEventListener('submit', calculation);
+const items = JSON.parse(localStorage.getItem('data')) || [];
+
+const file = 'FLtoDegrees.csv';
+fetch(file).then(response=>response.text())
+  .then(text=>{
+    var allTextLines = text.split(/\r\n|\n/);
+    var lines = [];
+    var data = []
+    for (var i = 1; i<allTextLines.length; i++) {
+      var row = allTextLines[i].split(',');
+      data.push( {
+          focallength: +row[0],
+          fovdegrees: +row[1]
+        })
+      };
+    dataready(data);
+  })
+  
+function dataready(data){
+  localStorage.setItem('data', JSON.stringify(data));
+}
+
+function calculation(e){
+  e.preventDefault();  
+  const focalLength = parseFloat((this.querySelector('[name=focalLength]')).value);
+  const sensorSize = parseFloat((this.querySelector('[name=sensorSize]')).value);
+  const boardWidth = parseFloat((this.querySelector('[name=boardWidth]')).value);
+  const presenter = parseFloat((this.querySelector('[name=presenter]')).value);
+  const room = parseFloat((this.querySelector('[name=room]')).value);
+  const AFOL = Math.round(focalLength*36/sensorSize);
+  var degree = items.find(el=>el.focallength == AFOL).fovdegrees;
+  const workingResult = Math.round(boardWidth/2/Math.tan(Math.PI*degree/2/180)*100)/100;
+  workingDistance.textContent = feetToinch(workingResult);
+  heightFromCeiling.textContent = feetToinch(Math.round((room-workingResult*Math.tan(Math.PI*15/180)-presenter)*100)/100);
+}
+function feetToinch(num){
+  var feet = Math.floor(num);
+  var inches = Math.round((num - feet) * 12);
+  return feet==0?inches+' in':feet+' ft '+inches+' in';
+}
+
+</script>
+</body>
+
+</html>
