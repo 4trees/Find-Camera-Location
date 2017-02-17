@@ -1,107 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scaleble=no">
   <title>Find Camera Position</title>
 </head>
 <body>
   <div class="container">
-    <h1>Find Camera Position</h1>
-    <div class="calculator">
-      <form class="calculate-form">
-        <ul>
-          <li>
-            <label for="focalLength" class="">Focal Length: </label>
-            <input type="number"  step="0.01" name='focalLength' class="input" required="required" id="focalLength" placeholder="number, e.g. 57"> mm
-          </li>
-          <li>
-            <label for="sensorSize" class="">Sensor Size: </label>
-            <input type="number" step="0.01" name='sensorSize' class="input" required="required" id="sensorSize" placeholder="number, e.g. 13.2"> mm
-          </li>
-          <li>
-            <label for="boardWidth" class="">White board width: </label>
-            <input type="number" step="0.01" name='boardWidth' class="input" required="required" id="boardWidth" placeholder="number, e.g. 6"> ft.
-          </li>
-          <li>
-            <label for="presenter" class="">Average presenter height: </label>
-            <input type="number" step="0.01" name='presenter' value="5.5" class="input" required="required" id="presenter" placeholder="number, e.g. 5.5"> ft.
-          </li>
-          <li>
-            <label for="room" class="">Room height: </label>
-            <input type="number" step="0.01" name='room' class="input" required="required" id="room" placeholder="number, e.g. 12"> ft.
-          </li>
-          </ul>
-          <input type="submit" value="Calculate">
-      </form>
+    <div class="pagetitle"><h1>Find Camera Position</h1></div>
+    <div class="row">
+      <div class="calculator">
+        <form class="calculate-form">
+            <div class="form-group">
+              <label for="focalLength">Focal Length: </label>
+              <div>
+                <input type="number"  step="0.01" name='focalLength' class="input" required="required" id="focalLength" placeholder="number, e.g. 57"> mm
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="sensorSize">Sensor Size: </label>
+              <div>
+                <input type="number" step="0.01" name='sensorSize' class="input" required="required" id="sensorSize" placeholder="number, e.g. 13.2"> mm
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="boardWidth">White board width: </label>
+              <div name="boardWidth">
+                <input type="number" step="1" name='boardWidthFeet' class="input" required="required" id="boardWidthFeet" placeholder="number, e.g. 6"> ft
+                <select name='boardWidthInch' class="input inch" id="boardWidthInch" ></select> in
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="room">Room height: </label>
+              <div name="room">
+                <input type="number" step="1" name='roomFeet' class="input" required="required" id="roomFeet" value="12"> ft
+                <select name='roomInch' class="input inch" id="roomInch"></select> in
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Calculate">
+            </div>
+        </form>
+      </div>
       <div class="result">
-        <p>Horizontal working distance is: <span id='workingDistance'></span></p>
-        <p>Height from the ceiling is: <span id='heightFromCeiling'></span></p>
+        <div class="resultelement">
+          <p class="resultdes">Horizontal working distance is: </p><p id='workingDistance'></p>
+        </div>
+        <div class="resultelement">
+          <p class="resultdes">Height from the ceiling is: </p><p id='heightFromCeiling'></p>
+        </div>         
       </div>
     </div>
   </div>
 <style>
 html{
   font-size: .75em;
+  width: 100%;
+  margin: 0;
 }
 body{
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  line-height: 1.4;
   color:#333;
   background: #fff;
   margin:0;
-
+  width: 100%;
 }
-input, button,select,textarea{
+input, button,select,textarea,.input{
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
+select{
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+}
 li{
    list-style-type:none;  
    list-style-position: outside;
-   margin: 20px 0;
 }
 ul{
-  padding-left: 0;
+  padding: 0;
 }
-input{
+.input{
   border-radius: 4px;
-  padding: 5px 10px;
+  padding: 12px 20px;
   background: inherit;
-  border: 1px #999 solid;
+  border: 1px #ccc solid;
+  width: 4em;
+  margin-left:3em;
+}
+input[type='submit']{
+  padding: 5px 15px;
+  -webkit-appearance:button;
+  cursor:pointer;
+  margin: 2.5em 45%;
+  width: 30%;
+  border-radius: 4px;
+  background: inherit;
+  border: 1px #a94442 solid;
+  color: #a94442;
+}
+input[type="submit"]:hover{
+  color: #fff;
+  background-color: #a94442;
 }
 .container{
   margin: 0 auto;
-  text-align: center;
   width: 100%;
-  /*clear:both;*/
+}
+.row{
+  width: 100%;
+  margin: 0 4.5%;
+}
+.row:after,.form-group:after{
+  clear: both;
+}
+.row:after,.row:before,.container:after,.container:before{
+  display: table;
+  content: " ";
+}
+.pagetitle{
+  width: 100%;
+  padding-top: 2em;
+  padding-bottom: 3em;
+  text-align: center;
+}
+.calculator, .result{
+  float: left;
+  display: block;
+  position: relative;
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+  width: 90%;
 }
 
-.calculate-form,.result{
-  /*display: block;*/
-  /*position: relative;*/
-  margin-top:50px;
-  margin-left: 30%;
-  /*top:20%;*/
-  text-align: left;
-}
-.calculator{
-  position: absolute;
+
+.calculate-form{
   width: 100%;
+}
+.form-group{
+  display: inline-block;
+  margin-bottom: 1.25em;
+  width: 100%;
+  line-height: 2em;
+}
+.form-group label{
+  display: block;
+  float: left;
+  width: 40%;
+  text-align: right;
+  padding-top: .5em;
+}
+.form-group div{
+  display: block;
+  width: 50%;
+  float: left;
+}
+.result{
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.resultelement{
+  display: block;
+  float: left;
+  position: relative;
+  width: 100%;
+  min-height: 100px;
 }
 #workingDistance,#heightFromCeiling{
   font-weight: 800;
-  color: red;
+  color: #a94442;
+  font-size: 2em;
 }
-.input{
-  margin-left: 1%;
-}
+
+
 
 </style>
 <script>
 const calculate = document.querySelector('.calculate-form');
 const workingDistance = document.querySelector('#workingDistance');
 const heightFromCeiling = document.querySelector('#heightFromCeiling');
+
+const inchInputs = document.querySelectorAll('.inch');
+const validInch = [0,1,2,3,4,5,6,7,8,9,10,11];
+inchInputs.forEach(inchInput=>{
+  inchInput.innerHTML = validInch.map(option=>{return `<option>${option}</option>`}).join('');
+  if(inchInput.id=='presenterInch'){
+    inchInput[6].selected=true;
+  }
+})
+
+
 
 calculate.addEventListener('submit', calculation);
 const items = JSON.parse(localStorage.getItem('data')) || [];
@@ -130,14 +220,13 @@ function calculation(e){
   e.preventDefault();  
   const focalLength = parseFloat((this.querySelector('[name=focalLength]')).value);
   const sensorSize = parseFloat((this.querySelector('[name=sensorSize]')).value);
-  const boardWidth = parseFloat((this.querySelector('[name=boardWidth]')).value);
-  const presenter = parseFloat((this.querySelector('[name=presenter]')).value);
-  const room = parseFloat((this.querySelector('[name=room]')).value);
+  const boardWidth = parseFloat((this.querySelector('[name=boardWidthFeet]')).value) + parseFloat((this.querySelector('[name=boardWidthInch]')).value) /12;
+  const room = parseFloat((this.querySelector('[name=roomFeet]')).value) + parseFloat((this.querySelector('[name=roomInch]')).value) /12;
   const AFOL = Math.round(focalLength*36/sensorSize);
   var degree = items.find(el=>el.focallength == AFOL).fovdegrees;
   const workingResult = Math.round(boardWidth/2/Math.tan(Math.PI*degree/2/180)*100)/100;
   workingDistance.textContent = feetToinch(workingResult);
-  heightFromCeiling.textContent = feetToinch(Math.round((room-workingResult*Math.tan(Math.PI*15/180)-presenter)*100)/100);
+  heightFromCeiling.textContent = feetToinch(Math.round((room-workingResult*Math.tan(Math.PI*15/180)-5.5)*100)/100);
 }
 function feetToinch(num){
   var feet = Math.floor(num);
