@@ -236,9 +236,6 @@ input[type="submit"]:hover{
   }
 }
 
-
-
-
 </style>
 <script>
 const calculate = document.querySelector('.calculate-form');
@@ -248,9 +245,11 @@ const heightFromCeiling = document.querySelector('#heightFromCeiling');
 const inchInputs = document.querySelectorAll('.inch');
 const validInch = [0,1,2,3,4,5,6,7,8,9,10,11];
 inchInputs.forEach(inchInput=>{
-  inchInput.innerHTML = validInch.map(option=>{return `<option>${option}</option>`}).join('');
-  if(inchInput.id=='presenterInch'){
-    inchInput[6].selected=true;
+  inchInput.innerHTML = validInch.map(option=>{return `<option value=${option}>${option}</option>`}).join('');
+  if(inchInput.id == 'presenterInch'){
+    inchInput[6].selected = true;
+  }else{
+    inchInput[0].selected = true;
   }
 })
 
