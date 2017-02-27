@@ -97,6 +97,7 @@ ul{
 input[type='submit']{
   padding: 5px 15px;
   -webkit-appearance:button;
+  -moz-appearance:button;
   cursor:pointer;
   width: 100%;
   border-radius: 4px;
@@ -241,12 +242,29 @@ input[type="submit"]:hover{
 const calculate = document.querySelector('.calculate-form');
 const workingDistance = document.querySelector('#workingDistance');
 const heightFromCeiling = document.querySelector('#heightFromCeiling');
+// if(calculate){alert('haha')}
 
 const inchInputs = document.querySelectorAll('.inch');
+var test = document.getElementById('workingDistance');
+// if(test){alert('haha')}
+console.log(inchInputs);
+// const validInch = {'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'10':10,'11':11};
 const validInch = [0,1,2,3,4,5,6,7,8,9,10,11];
-inchInputs.forEach(inchInput=>{
-  inchInput.innerHTML = validInch.map(option=>{return `<option value=${option}>${option}</option>`}).join('');
-})
+
+for(var i=0; i<inchInputs.length; i++){
+  console.log(this)
+  inchInputs[i].innerHTML = validInch.map(function(option){return `<option value=${option}>${option}</option>`}).join('');
+}
+// inchInputs.forEach(inchInput=>{
+//   inchInput.innerHTML = validInch.map(option=>{return `<option value=${option}>${option}</option>`}).join('');
+  // validInch.forEach(inch=>{
+  //   let option = document.createElement('option');
+  //   option.text = inch;
+  //   option.value = inch;
+  //   inchInput.options.add(option);
+  // })
+  
+// })
 
 
 
