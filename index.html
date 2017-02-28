@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
   <title>Find Camera Position</title>
+  <script src="FLtoDegrees.js"></script>
 </head>
 <body>
+
   <div class="container">
     <div class="pagetitle"><h1>Find Camera Position</h1></div>
     <div class="row">
@@ -239,57 +241,29 @@ input[type="submit"]:hover{
 
 </style>
 <script>
+
 const calculate = document.querySelector('.calculate-form');
 const workingDistance = document.querySelector('#workingDistance');
 const heightFromCeiling = document.querySelector('#heightFromCeiling');
-// if(calculate){alert('haha')}
+
 
 const inchInputs = document.querySelectorAll('.inch');
-var test = document.getElementById('workingDistance');
-// if(test){alert('haha')}
-console.log(inchInputs);
-// const validInch = {'0':0,'1':1,'2':2,'3':3,'4':4,'5':5,'6':6,'7':7,'8':8,'9':9,'10':10,'11':11};
 const validInch = [0,1,2,3,4,5,6,7,8,9,10,11];
 
 for(var i=0; i<inchInputs.length; i++){
-  console.log(this)
   inchInputs[i].innerHTML = validInch.map(function(option){return `<option value=${option}>${option}</option>`}).join('');
 }
-// inchInputs.forEach(inchInput=>{
-//   inchInput.innerHTML = validInch.map(option=>{return `<option value=${option}>${option}</option>`}).join('');
-  // validInch.forEach(inch=>{
-  //   let option = document.createElement('option');
-  //   option.text = inch;
-  //   option.value = inch;
-  //   inchInput.options.add(option);
-  // })
-  
-// })
-
-
 
 calculate.addEventListener('submit', calculation);
-const items = JSON.parse(localStorage.getItem('data')) || [];
 
-const file = 'FLtoDegrees.csv';
-fetch(file).then(response=>response.text())
-  .then(text=>{
-    var allTextLines = text.split(/\r\n|\n/);
-    var lines = [];
-    var data = []
-    for (var i = 1; i<allTextLines.length; i++) {
-      var row = allTextLines[i].split(',');
-      data.push( {
-          focallength: +row[0],
-          fovdegrees: +row[1]
-        })
-      };
-    dataready(data);
+var data = []
+for (var i=0; i<lsz-1; i++) {
+  data.push({
+    focallength: +FocalLengthmm[i],
+    fovdegrees: +FOVindegrees[i]
   })
-  
-function dataready(data){
-  localStorage.setItem('data', JSON.stringify(data));
-}
+};
+
 
 function calculation(e){
   e.preventDefault();  
@@ -298,7 +272,7 @@ function calculation(e){
   const boardWidth = parseFloat((this.querySelector('[name=boardWidthFeet]')).value) + parseFloat((this.querySelector('[name=boardWidthInch]')).value) /12;
   const room = parseFloat((this.querySelector('[name=roomFeet]')).value) + parseFloat((this.querySelector('[name=roomInch]')).value) /12;
   const AFOL = Math.round(focalLength*36/sensorSize);
-  var degree = items.find(el=>el.focallength == AFOL).fovdegrees;
+  var degree = data.find(function(el){return el.focallength == AFOL}).fovdegrees;
   const workingResult = Math.round(boardWidth/2/Math.tan(Math.PI*degree/2/180)*100)/100;
   workingDistance.textContent = feetToinch(workingResult);
   heightFromCeiling.textContent = feetToinch(Math.round((room-workingResult*Math.tan(Math.PI*15/180)-5.5)*100)/100);
