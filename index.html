@@ -9,64 +9,103 @@
 
   <div class="container">
     <div class="pagetitle"><h1>Find Camera Position</h1></div>
-    <div class="row">
-      <div class="calculator">
-        <form class="calculate-form">
-            <div class="form-group">
-              <label for="focalLength">Focal Length </label>
-              <div>
-                <span><input type="number"  step="0.01" name='focalLength' class="input" required="required" id="focalLength" placeholder="number, e.g. 57"> mm</span>
+      <div class="row">
+          <div class="result">
+            <div class="resultelement">
+              <!-- <object data="illustration.svg" id='illustration' type="image/svg+xml"></object> -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="1562.34" height="auto" viewBox="0 0 1562.34 900">
+                <g id="Layer_2" data-name="Layer 2">
+                  <g id="Layer_1-2" data-name="Layer 1">
+                    <g id="camera">
+                      <rect id="backpart" class="cls-1" x="181.17" y="428.04" width="10.33" height="51.01" transform="translate(372.67 907.08) rotate(180)"/>
+                      <g id="sticker">
+                        <line class="cls-1" x1="139.64" y1="414.3" x2="139.64" y2="545.68"/>
+                        <line class="cls-1" x1="139.64" y1="521.68" x2="204.14" y2="521.68"/>
+                        <line class="cls-1" x1="202.81" y1="522.82" x2="215.53" y2="498.72"/>
+                      </g>
+                      <path id="mainpart" class="cls-1" d="M368.19,515.83,191.73,495.76,191.66,410l221.92,26.81Z"/>
+                    </g>
+                    <g id="presenter">
+                      <circle id="head" class="cls-1" cx="1313.89" cy="585.59" r="25.96"/>
+                      <path id="body" class="cls-1" d="M1328.84,732.79c-3.33,10,1,69.45-2.38,97.52-.07.58-17.44,3-17.6-1.9-1-29-2.38-83.25-3.81-97.52-1.92-6.8-15.16-3.68-13.8-15.7,2.85-25.21,4.76-69,4.28-94.67,0-.44,37.87-4.61,38.06-1.43,1.43,24.74,1.9,57.09,3.33,94.19C1337.44,726.72,1332.22,719.78,1328.84,732.79Z"/>
+                    </g>
+                    <g id="fromceiling">
+                      <g>
+                        <line class="cls-1" x1="368.07" y1="7.77" x2="368.07" y2="432.48"/>
+                        <polygon class="cls-2" points="351.71 21.02 354.64 23.75 368.06 9.3 381.49 23.75 384.42 21.02 368.06 3.43 351.71 21.02"/>
+                      </g>
+                    </g>
+                    <g id="fromceiling-2" data-name="fromceiling">
+                      <g>
+                        <line class="cls-1" x1="1257.85" y1="485.27" x2="385.56" y2="485.27"/>
+                        <polygon class="cls-2" points="1244.6 468.92 1241.87 471.84 1256.31 485.27 1241.87 498.7 1244.6 501.63 1262.19 485.27 1244.6 468.92"/>
+                      </g>
+                    </g>
+                    <rect id="board" class="cls-1" x="1380" y="469.04" width="24" height="232"/>
+                    <text id="heightFromCeiling" class="cls-3" transform="translate(394 232)">Height from the ceiling</text>
+                    <text id="workingDistance" class="cls-3" transform="translate(614 582)">Horizontal working distance</text>
+                    <rect id="background" class="cls-13" width="1562.34" height="842.81"/>
+                  </g>
+                </g>
+              </svg>
+
+            </div>
+    <!--         <div class="resultelement">
+              <div class="resultdes">
+                <p >Horizontal working distance is </p><p id='workingDistance'></p>
               </div>
             </div>
-            <div class="form-group">
-              <label for="sensorSize">Sensor Size </label>
-              <div>
-                <span><input type="number" step="0.01" name='sensorSize' class="input" required="required" id="sensorSize" placeholder="number, e.g. 13.2"> mm</span>
+            <div class="resultelement">
+              <div class="resultdes">
+                <p>Height from the ceiling is </p><p id='heightFromCeiling'></p>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="boardWidth">White board width </label>
-              <div name="boardWidth">
-                <span><input type="number" step="1" name='boardWidthFeet' class="input" required="required" id="boardWidthFeet" placeholder="number, e.g. 6"> ft
-                <select name='boardWidthInch' class="input inch" id="boardWidthInch" ></select> in</span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="room">Room height </label>
-              <div name="room">
-                <span><input type="number" step="1" name='roomFeet' class="input" required="required" id="roomFeet" value="12"> ft
-                <select name='roomInch' class="input inch" id="roomInch"></select> in</span>
-              </div>
-            </div>
-            <div class="form-group">
-              <input type="submit" value="Calculate">
-            </div>
-        </form>
-      </div>
-      <div class="result">
-        <div class="resultelement">
-          <div class="resultdes">
-            <p >Horizontal working distance is </p><p id='workingDistance'></p>
+            </div>  -->        
           </div>
-        </div>
-        <div class="resultelement">
-          <div class="resultdes">
-            <p>Height from the ceiling is </p><p id='heightFromCeiling'></p>
+          <div class="calculator">
+            <form class="calculate-form">
+                <div class="form-group forminput">
+                  <label for="focalLength">Focal Length </label>
+                  <div>
+                    <span><input type="number"  step="0.01" name='focalLength' class="input" required="required" id="focalLength" placeholder="57"> mm</span>
+                  </div>
+                </div>
+                <div class="form-group forminput">
+                  <label for="sensorSize">Sensor Size </label>
+                  <div>
+                    <span><input type="number" step="0.01" name='sensorSize' class="input" required="required" id="sensorSize" placeholder="13.2"> mm</span>
+                  </div>
+                </div>
+                <div class="form-group forminput">
+                  <label for="boardWidth">White board width </label>
+                  <div name="boardWidth">
+                    <span><input type="number" step="1" name='boardWidthFeet' class="input" required="required" id="boardWidthFeet" placeholder="6"> ft
+                    <select name='boardWidthInch' class="input inch" id="boardWidthInch" ></select> in</span>
+                  </div>
+                </div>
+                <div class="form-group forminput">
+                  <label for="room">Room height </label>
+                  <div name="room">
+                    <span><input type="number" step="1" name='roomFeet' class="input" required="required" id="roomFeet" value="12"> ft
+                    <select name='roomInch' class="input inch" id="roomInch"></select> in</span>
+                  </div>
+                </div>
+                <div class="form-group button">
+                  <input type="submit" value="Calculate">
+                </div>
+            </form>
           </div>
-        </div>         
-      </div>
     </div>
   </div>
 <style>
 html{
-  font-size: 1em;
+  font-size: .8em;
   width: 100%;
   margin: 0;
 }
 body{
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color:#333;
-  background: #fff;
+  background: #ededed;
   margin:0;
   width: 100%;
 }
@@ -77,6 +116,11 @@ input, button,select,textarea,.input{
   -webkit-appearance:button;
   -moz-appearance:none;
   appearance:none;
+  min-width: 45px;
+  margin-right: .3em;
+}
+select{
+  margin-left: .3em;
 }
 li{
    list-style-type:none;  
@@ -85,16 +129,20 @@ li{
 ul{
   padding: 0;
 }
+h1{
+  font-size:1.75em;
+  font-weight: 300;
+}
 .input{
   display: inline-block;
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
-  padding: 8px 10px;
-  max-width: 50%;
+  padding: 8px 5px;
+  max-width: 30%;
+  margin-top: 1em;
   background: inherit;
   border: 1px #ccc solid;
-  margin-left: 10px;
 }
 input[type='submit']{
   padding: 5px 15px;
@@ -102,16 +150,17 @@ input[type='submit']{
   -moz-appearance:button;
   cursor:pointer;
   width: 100%;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
   border-radius: 4px;
-  background: inherit;
-  border: 1px #a94442 solid;
-  color: #a94442;
-  margin-top: 1.5em;
+  background: #dddee1;
+  border:1px #ccc solid;
+  color: #596675;
   max-width: 600px;
 }
 input[type="submit"]:hover{
   color: #fff;
-  background-color: #a94442;
+  background-color: #596675;
 }
 .container{
   margin: 0 auto;
@@ -121,7 +170,7 @@ input[type="submit"]:hover{
   width: 100%;
   margin: 0 auto;
 }
-.row:after,.form-group:after,.resultelement:after{
+.row:after,.form-group:after,.resultelement:after,.calculate-form:after{
   clear: both;
 }
 .row:after,.row:before,.container:after,.container:before{
@@ -130,8 +179,12 @@ input[type="submit"]:hover{
 }
 .pagetitle{
   width: 100%;
-  padding-top: 1.25em;
+  padding-top: .2em;
+  padding-bottom: .2em;
   text-align: center;
+  background: #dddee1;
+  color: #596675;
+  box-shadow: 1px 1px 1px #ccc;
 }
 .calculator, .result{
   float: left;
@@ -143,28 +196,40 @@ input[type="submit"]:hover{
 
 
 .calculate-form{
-  padding: 20px;
+  padding: 10px;
   text-align: center;
+  display: inline-block;
+}
+.forminput{
+  background: #fff;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  margin-right: 5px; 
+  padding:.75em;
 }
 .form-group{
   display: inline-block;
-  width: 100%;
+  width: 41%;
   line-height: 2em;
-  margin-top: .5em;
+  margin-bottom:.75em;
 }
 .form-group label{
   display: block;
   float: left;
   width: 100%;
   text-align: left;
-  padding: .5em;
-  color: #a94442;
+  color: #596675;
 }
 .form-group div{
   display: block;
   width: 100%;
-  float: left;
   text-align: left;
+}
+.button{
+  float: middle;
+  text-align: center;
+  margin-top: 20px
 }
 
 .resultelement{
@@ -173,79 +238,109 @@ input[type="submit"]:hover{
   position: relative;
   width: 100%;
 }
+.resultelement svg{
+  width: 100%;
+  font-size: 3.2em;
+  height: auto;
+}
 .resultdes{
   display: block;
   padding: 10px 20px;
   margin: 10px 20px;
   border: 1px solid #ccc;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
   border-radius: 4px;
   min-height: 100px;
 }
-#workingDistance,#heightFromCeiling{
+/*#workingDistance,#heightFromCeiling{
   font-weight: 800;
-  color: #a94442;
+  color: #596675;
+  font-size: 2em;
+}*/
+
+/* svg */
+.cls-1, .cls-13 {
+  fill: none;
+}
+.cls-1 {
+  stroke: #231f20;
+  stroke-width: 4px;
+}
+.number{
+  font-weight: 500;
+  fill: #e27a4c;
   font-size: 2em;
 }
 /*small device: tablets*/
 @media (min-width: 768px){
-  .calculator{
-    margin-top: 2em;
+  .row{
+    text-align: center;
   }
-  .input{
-    margin-left: 2em;
-    margin-right: .5em;
-  }
-  .form-group label{
-    width: 30%;
-    text-align: right;
-  }
-  .form-group div{
-    width: 60%;
-  }
-  input[type='submit']{
-    width: 60%;
-  }
-  .resultelement{
-    width: 50%;
-    margin-top: 2em;
-  }
-} 
-/*medium device: desktops*/
-@media (min-width: 992px){
-  .resultelement{
-    width: 50%;
-  }
-}
-/*large device: large desktops*/
-@media (min-width: 1200px){
   .resultelement{
     width: 100%;
   }
   .result{
-    width: 35%;
+    width: 40%;
+    margin-left: 1em;
   }
   .calculator{
-    width: 60%;
+    width: 55%;
   }
   .calculator, .result{
-    margin-top: 3em;
+    margin-top: 4em;
   }
   .form-group{
-    margin-top: 2em;
+    margin-top: .5em;
+    width: 50%;
   }
-  h1{
-    font-weight: 200;
-    font-size: 300%;
+} 
+/*medium device: desktops*/
+@media (min-width: 992px){
+
+}
+/*large device: large desktops*/
+@media (min-width: 1200px){
+  html{
+    font-size: 1em;
   }
+  .row{
+    text-align: center;
+  }
+  .resultelement{
+    width: 100%;
+  }
+  .result{
+    width: 40%;
+    margin-left: 4em;
+  }
+  .calculator{
+    width: 55%;
+  }
+  .calculator, .result{
+    margin-top: 5em;
+  }
+  .form-group{
+    margin-top: .5em;
+    width: 50%;
+  }
+  .resultelement svg{
+  font-size: 2em;
+}
+
 }
 
 </style>
 <script>
 
 const calculate = document.querySelector('.calculate-form');
-const workingDistance = document.querySelector('#workingDistance');
-const heightFromCeiling = document.querySelector('#heightFromCeiling');
+// const workingDistance = document.querySelector('#workingDistance');
+// const heightFromCeiling = document.querySelector('#heightFromCeiling');
 
+const workingDistance = document.querySelector('#workingDistance')
+// .querySelector('#workingDistance');
+const heightFromCeiling = document.querySelector('#heightFromCeiling');
+console.log(heightFromCeiling)
 
 const inchInputs = document.querySelectorAll('.inch');
 const validInch = [0,1,2,3,4,5,6,7,8,9,10,11];
@@ -274,8 +369,10 @@ function calculation(e){
   const AFOL = Math.round(focalLength*36/sensorSize);
   var degree = data.find(function(el){return el.focallength == AFOL}).fovdegrees;
   const workingResult = Math.round(boardWidth/2/Math.tan(Math.PI*degree/2/180)*100)/100;
-  workingDistance.textContent = feetToinch(workingResult);
-  heightFromCeiling.textContent = feetToinch(Math.round((room-workingResult*Math.tan(Math.PI*15/180)-5.5)*100)/100);
+  workingDistance.innerHTML = feetToinch(workingResult);
+  heightFromCeiling.innerHTML = feetToinch(Math.round((room-workingResult*Math.tan(Math.PI*15/180)-5.5)*100)/100);
+  workingDistance.classList.add('number')
+  heightFromCeiling.classList.add('number')
 }
 function feetToinch(num){
   var feet = Math.floor(num);
