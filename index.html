@@ -13,7 +13,7 @@
           <div class="result">
             <div class="resultelement">
               <!-- <object data="illustration.svg" id='illustration' type="image/svg+xml"></object> -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="1562.34" height="auto" viewBox="0 0 1562.34 900">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1562.34" viewBox="0 0 1562.34 900">
                 <g id="Layer_2" data-name="Layer 2">
                   <g id="Layer_1-2" data-name="Layer 1">
                     <g id="camera">
@@ -66,7 +66,7 @@
                 <div class="form-group forminput">
                   <label for="focalLength">Focal Length </label>
                   <div>
-                    <span><input type="number"  step="0.01" name='focalLength' class="input" required="required" id="focalLength" placeholder="57"> mm</span>
+                    <span><input type="number"  step="0.01" name='focalLengthMin' class="input" required="required" id="focalLengthMin" placeholder="35">– <input type="number"  step="0.01" name='focalLengthMax' class="input" required="required" id="focalLengthMax" placeholder="80"> mm</span>
                   </div>
                 </div>
                 <div class="form-group forminput">
@@ -117,11 +117,14 @@ input, button,select,textarea,.input{
   -webkit-appearance:button;
   -moz-appearance:none;
   appearance:none;
-  min-width: 45px;
   margin-right: .3em;
 }
 select{
   margin-left: .3em;
+  min-width: 45px;
+}
+input{
+  min-width: 35px;
 }
 li{
    list-style-type:none;  
@@ -140,12 +143,12 @@ h1{
   -webkit-border-radius: 4px;
   border-radius: 4px;
   padding: 8px 5px;
-  max-width: 30%;
+  max-width: 20%;
   margin-top: 1em;
   background: inherit;
   border: 1px #ccc solid;
 }
-input[type='submit']{
+input[type = 'submit']{
   padding: 5px 15px;
   -webkit-appearance:button;
   -moz-appearance:button;
@@ -159,7 +162,7 @@ input[type='submit']{
   color: #fff;
   max-width: 600px;
 }
-input[type="submit"]:hover{
+input[type = "submit"]:hover{
   color: #fff;
   background-color: #2D9EE0;
 }
@@ -367,7 +370,7 @@ for (var i=0; i<lsz-1; i++) {
 
 function calculation(e){
   e.preventDefault();  
-  const focalLength = parseFloat((this.querySelector('[name=focalLength]')).value);
+  const focalLength = (parseFloat((this.querySelector('[name=focalLengthMax]')).value) + parseFloat((this.querySelector('[name=focalLengthMin]')).value)) /2;
   const sensorSize = parseFloat((this.querySelector('[name=sensorSize]')).value);
   const boardWidth = parseFloat((this.querySelector('[name=boardWidthFeet]')).value) + parseFloat((this.querySelector('[name=boardWidthInch]')).value) /12;
   const room = parseFloat((this.querySelector('[name=roomFeet]')).value) + parseFloat((this.querySelector('[name=roomInch]')).value) /12;
